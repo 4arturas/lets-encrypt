@@ -52,22 +52,43 @@ kubectl de
 ngrok http $(minikube ip):80
 ````
 
-https://7b11-84-15-180-123.eu.ngrok.io/hello
-https://7b11-84-15-180-123.eu.ngrok.io/welcome
-
-change *spec.rules.host* in *greeting-ngrok-ingress.yaml*
-
 ````
 kubectl delete -f greeting-ingress.yaml 
+````
+
+````
+python3 /usr/local/bin/pagekite.py http://192.168.49.2 4arturas.pagekite.me
+````
+
+change *spec.tls.hosts* in *greeting-ngrok-ingress.yaml* to 4arturas.pagekite.me
+
+````
+kubectl apply -f greeting-ngrok-ingress.yaml
+````
+
+````
+curl https://4arturas.pagekite.me/hello
+````
+
+````
+curl $(minikube ip)/welcome
 ````
 
 ````
 kubectl get certificate
 ````
 
+wait until *READY* status will change from *False* to *True*
+
+````
+watch kubectl get certificate
+````
+
 ````
 kubectl describe certificate echo-tls
 ````
+
+check certificate in browser by clicking the lock symbol
 
 
 

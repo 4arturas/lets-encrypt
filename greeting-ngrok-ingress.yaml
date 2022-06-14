@@ -8,7 +8,7 @@ metadata:
 spec:
   tls:
     - hosts:
-        - 7b11-84-15-180-123.eu.ngrok.io
+        - 4arturas.pagekite.me
       secretName: echo-tls
   rules:
     - http:
