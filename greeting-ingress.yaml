@@ -1,18 +1,26 @@
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: greeting-ingress
   annotations:
-    ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/redirect-regex: ^/(.*)
 spec:
   rules:
-  - http:
-      paths:
-        - path: /hello
-          backend:
-            serviceName: hello-service
-            servicePort: 5678
-        - path: /welcome
-          backend:
-            serviceName: welcome-service
-            servicePort: 5678
+    - host: hello-world.info
+      http:
+        paths:
+          - path: /hello
+            pathType: Prefix
+            backend:
+              service:
+                name: hello
+                port:
+                  name: hello-port
+          - path: /welcome
+            pathType: Prefix
+            backend:
+              service:
+                name: welcome
+                port:
+                  name: welcome-port
+

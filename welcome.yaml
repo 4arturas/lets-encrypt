@@ -22,3 +22,4 @@ spec:
     app: welcome
   ports:
     - port: 5678 # Default port for image
+      name: welcome-port
