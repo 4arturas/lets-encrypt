@@ -1,12 +1,12 @@
 kind: Pod
 apiVersion: v1
 metadata:
-  name: welcome-app
+  name: welcome
   labels:
     app: welcome
 spec:
   containers:
-    - name: welcome-app
+    - name: welcome
       image: hashicorp/http-echo
       args:
         - "-text=welcome"
@@ -16,10 +16,10 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: welcome-service
+  name: welcome
 spec:
   selector:
     app: welcome
   ports:
     - port: 5678 # Default port for image
-      name: welcome-port
+      name: welcome

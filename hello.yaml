@@ -1,12 +1,12 @@
 kind: Pod
 apiVersion: v1
 metadata:
-  name: hello-app
+  name: hello
   labels:
     app: hello
 spec:
   containers:
-    - name: hello-app
+    - name: hello
       image: hashicorp/http-echo
       args:
         - "-text=Hello"
@@ -16,10 +16,10 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: hello-service
+  name: hello
 spec:
   selector:
     app: hello
   ports:
     - port: 5678 # Default port for image
-      name: hello-port
+      name: hello
